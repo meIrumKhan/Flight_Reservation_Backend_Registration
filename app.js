@@ -20,7 +20,7 @@ server.use(express.static("public"));
 
 server.use(
   cors({
-    origin: ["http://localhost:3000"],
+    origin: ["http://localhost:3000", "https://fyp-frontend-roan.vercel.app"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
     // allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
@@ -1104,8 +1104,24 @@ server.get("/logout", authMiddleware, (req, resp) => {
   }
 });
 
+server.get("/", (req, resp) => {
+  try {
+
+    return resp.json({ message: "Group - Members: Irum Rian, Ammar Sajjad , Muhammad Haseeb - Project: AirTik ( ADVANCED AIR (Reservation-system)) " });
+
+    
+
+  } catch (e) {
+    console.log(e.message);
+  }
+});
+
+
+
+
 server.listen(PORT, () => {
   try {
+
     console.log(`Server running on port ${PORT}`);
   } catch (e) {
     console.log(e.message);
