@@ -1061,18 +1061,18 @@ server.post("/login", async (req, res) => {
         // { expiresIn: "1h" }
       );
 
-      res.cookie("token", token);
+      // res.cookie("token", token);
 
-      //  const cookiesCredentials = {
-      //    httpOnly: true,
-      //    // secure: process.env.NODE_ENV === 'production',
-      //    secure: true,
-      //    sameSite: "None",
-      //    path: "/",
-      //    maxAge: 3600000,
-      //  };
+       const cookiesCredentials = {
+         httpOnly: true,
+         // secure: process.env.NODE_ENV === 'production',
+         secure: true,
+         sameSite: "None",
+         path: "/",
+         maxAge: 3600000,
+       };
 
-      //  res.cookie("token", token, cookiesCredentials);
+       res.cookie("token", token, cookiesCredentials);
 
       return res.json({
         user,
@@ -1089,15 +1089,15 @@ server.post("/login", async (req, res) => {
 
 server.get("/logout", authMiddleware, (req, resp) => {
   try {
-    //  resp.clearCookie("token", {
-    //    httpOnly: true,
-    //    secure: true,
-    //    sameSite: "None",
-    //    path: "/",
-    //    maxAge: 0,
-    //  });
+     resp.clearCookie("token", {
+       httpOnly: true,
+       secure: true,
+       sameSite: "None",
+       path: "/",
+       maxAge: 0,
+     });
 
-    resp.cookie("token", "");
+    // resp.cookie("token", "");
     resp.json({ logout: true });
   } catch (e) {
     console.log(e.message);
