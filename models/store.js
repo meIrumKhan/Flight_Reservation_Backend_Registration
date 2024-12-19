@@ -3,8 +3,11 @@ const { Schema } = mongoose;
 const shortid = require("shortid");
 
 mongoose.connect(
-  "mongodb+srv://irumriaz:N1UPpbrYa8Ggthvr@cluster0.ngfpv.mongodb.net/AIRTIK"
+  "mongodb+srv://fa7711598:aI3kmYs4IBaFsxNi@cluster0.f5kgg.mongodb.net/AIRTIK"
 );
+
+// mongodb+srv://fa7711598:<db_password>@cluster0.f5kgg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+
 
 const locationSchema = new mongoose.Schema({
   city: { type: String, required: true },
